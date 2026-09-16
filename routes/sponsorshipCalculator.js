@@ -1,13 +1,10 @@
 const express = require("express");
 const { calculateSponsorshipRate } = require("../controller/sponsorshipCalculator");
+const { protect } = require("../middleware/auth");
 
 const router = express.Router();
 
-// Simple auth middleware for testing
-router.use((req, res, next) => {
-    req.user = { id: 'test-user-id' };
-    next();
-});
+router.use(protect);
 
 /**
  * @swagger
@@ -15,6 +12,8 @@ router.use((req, res, next) => {
  *   post:
  *     summary: Calculate sponsorship rate
  *     description: Calculate estimated sponsorship rate based on creator metrics and campaign details
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:

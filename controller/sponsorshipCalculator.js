@@ -1,12 +1,9 @@
+const asyncHandler = require("../utils/asyncHandler");
+
 /**
  * Sponsorship Rate Calculator Controller
  * Calculates sponsorship rates based on creator metrics and campaign details
  */
-
-// Simple async handler wrapper
-const asyncHandler = (fn) => (req, res, next) => {
-    Promise.resolve(fn(req, res, next)).catch(next);
-};
 
 // Pricing factors and multipliers
 const PRICING_FACTORS = {
